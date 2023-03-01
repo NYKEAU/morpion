@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/94cdca04a5.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/CSS/index.css">
+    <title>Tic-Tac-Toe</title>
+</head>
+
+<body>
+    <main>
+        <div id="selectMenu">
+            <h1>Tic-Tac-Toe</h1>
+            <div id="selectButtons">
+                <button id="1player" onclick="selectGame(1)">1 Joueur</button>
+                <button id="2player" onclick="selectGame(2)">2 Joueurs</button>
+            </div>
+        </div>
+        <div id="game">
+            <table>
+                <tr>
+                    <td class="cell" id="1" onclick="play(this.id)"></td>
+                    <td class="cell" id="2" onclick="play(this.id)"></td>
+                    <td class="cell" id="3" onclick="play(this.id)"></td>
+                </tr>
+                <tr>
+                    <td class="cell" id="4" onclick="play(this.id)"></td>
+                    <td class="cell" id="5" onclick="play(this.id)"></td>
+                    <td class="cell" id="6" onclick="play(this.id)"></td>
+                </tr>
+                <tr>
+                    <td class="cell" id="7" onclick="play(this.id)"></td>
+                    <td class="cell" id="8" onclick="play(this.id)"></td>
+                    <td class="cell" id="9" onclick="play(this.id)"></td>
+                </tr>
+            </table>
+            <div id="gameButtons">
+                <button id="reset" onclick="reset()">Recommencer</button>
+                <button id="back" onclick="back()">Changer de mode</button>
+            </div>
+        </div>
+    </main>
+</body>
+
+<script type="text/javascript" src="/JS/index.js"></script>
+
+</html>
