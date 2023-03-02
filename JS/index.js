@@ -58,7 +58,7 @@ function onePlayer(cell) {
         blockCells();
         setTimeout(() => {
             alert('Match nul !');
-        }, "1");
+        }, "100");
         gameButtons.style.display = 'flex';
         return;
     }
@@ -70,7 +70,7 @@ function onePlayer(cell) {
                 blockCells();
                 setTimeout(() => {
                     alert('Joueur ' + playerTurn + ' a gagné !');
-                }, "1");
+                }, "100");
                 gameButtons.style.display = 'flex';
                 return;
             }
@@ -86,7 +86,7 @@ function computerPlay() {
     if (checkDraw()) {
         setTimeout(() => {
             alert('Match nul !');
-        }, "1");
+        }, "100");
         gameButtons.style.display = 'flex';
         return;
     }
@@ -106,7 +106,7 @@ function computerPlay() {
             if (checkWin()) {
                 setTimeout(() => {
                     alert('Joueur ' + playerTurn + ' a gagné !');
-                }, "1");
+                }, "100");
                 blockCells();
                 gameButtons.style.display = 'flex';
             } else {
@@ -141,7 +141,7 @@ function computerPlay() {
     if (checkWin()) {
         setTimeout(() => {
             alert('Joueur ' + playerTurn + ' a gagné !');
-        }, "1");
+        }, "100");
         blockCells();
         gameButtons.style.display = 'flex';
     } else {
@@ -155,7 +155,7 @@ function twoPlayers(cell) {
         blockCells();
         setTimeout(() => {
             alert('Match nul !');
-        }, "1");
+        }, "100");
         gameButtons.style.display = 'flex';
         return;
     }
@@ -166,7 +166,7 @@ function twoPlayers(cell) {
             blockCells();
             setTimeout(() => {
                 alert('Joueur ' + playerTurn + ' a gagné !');
-            }, "1");
+            }, "100");
             gameButtons.style.display = 'flex';
             return;
         }
