@@ -58,7 +58,7 @@ function onePlayer(cell) {
         blockCells();
         setTimeout(() => {
             alert('Match nul !');
-        }, "100");
+        }, "500");
         gameButtons.style.display = 'flex';
         return;
     }
@@ -70,7 +70,7 @@ function onePlayer(cell) {
                 blockCells();
                 setTimeout(() => {
                     alert('Joueur ' + playerTurn + ' a gagné !');
-                }, "100");
+                }, "500");
                 gameButtons.style.display = 'flex';
                 return;
             }
@@ -86,7 +86,7 @@ function computerPlay() {
     if (checkDraw()) {
         setTimeout(() => {
             alert('Match nul !');
-        }, "100");
+        }, "500");
         gameButtons.style.display = 'flex';
         return;
     }
@@ -104,10 +104,10 @@ function computerPlay() {
             const cell = document.getElementById(winCondition.find(c => document.getElementById(c).innerHTML === ''));
             cell.innerHTML = playerSymbol;
             if (checkWin()) {
+                blockCells();
                 setTimeout(() => {
                     alert('Joueur ' + playerTurn + ' a gagné !');
-                }, "100");
-                blockCells();
+                }, "500");
                 gameButtons.style.display = 'flex';
             } else {
                 playerTurn = (playerTurn === 1) ? 2 : 1;
@@ -139,10 +139,10 @@ function computerPlay() {
     }
     cell.innerHTML = playerSymbol;
     if (checkWin()) {
+        blockCells();
         setTimeout(() => {
             alert('Joueur ' + playerTurn + ' a gagné !');
-        }, "100");
-        blockCells();
+        }, "500");
         gameButtons.style.display = 'flex';
     } else {
         playerTurn = (playerTurn === 1) ? 2 : 1;
@@ -155,7 +155,7 @@ function twoPlayers(cell) {
         blockCells();
         setTimeout(() => {
             alert('Match nul !');
-        }, "100");
+        }, "500");
         gameButtons.style.display = 'flex';
         return;
     }
@@ -166,7 +166,7 @@ function twoPlayers(cell) {
             blockCells();
             setTimeout(() => {
                 alert('Joueur ' + playerTurn + ' a gagné !');
-            }, "100");
+            }, "500");
             gameButtons.style.display = 'flex';
             return;
         }
