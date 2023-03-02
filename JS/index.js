@@ -84,7 +84,6 @@ function onePlayer(cell) {
 
 function computerPlay() {
     if (checkDraw()) {
-        blockCells();
         setTimeout(() => {
             alert('Match nul !');
         }, "1");
@@ -93,115 +92,45 @@ function computerPlay() {
     }
     console.log('Computer turn');
     playerSymbol = (playerTurn === 1) ? playerOne[1] : playerTwo[1];
+
     for (let i = 0; i < winningConditions.length; i++) {
         const winCondition = winningConditions[i];
         const a = document.getElementById(winCondition[0]).innerHTML;
         const b = document.getElementById(winCondition[1]).innerHTML;
         const c = document.getElementById(winCondition[2]).innerHTML;
-        if (a === b && b === playerTwo[1]) {
-            const cell = document.getElementById(winCondition[2]);
-            console.log('playerTwo[1]');
-            if (cell.innerHTML === '') {
-                cell.innerHTML = playerSymbol;
-                if (checkWin()) {
-                    blockCells();
-                    setTimeout(() => {
-                        alert('Joueur ' + playerTurn + ' a gagné !');
-                    }, "1");
-                    gameButtons.style.display = 'flex';
-                    return;
-                }
+        if ((a === b && b === playerTwo[1] && c === '') ||
+            (a === c && c === playerTwo[1] && b === '') ||
+            (b === c && c === playerTwo[1] && a === '')) {
+            const cell = document.getElementById(winCondition.find(c => document.getElementById(c).innerHTML === ''));
+            cell.innerHTML = playerSymbol;
+            if (checkWin()) {
+                setTimeout(() => {
+                    alert('Joueur ' + playerTurn + ' a gagné !');
+                }, "1");
+                blockCells();
+                gameButtons.style.display = 'flex';
+            } else {
                 playerTurn = (playerTurn === 1) ? 2 : 1;
-                return;
             }
-        }
-        else if (a === c && c === playerTwo[1]) {
-            console.log('playerTwo[1]');
-            const cell = document.getElementById(winCondition[1]);
-            if (cell.innerHTML === '') {
-                cell.innerHTML = playerSymbol;
-                if (checkWin()) {
-                    blockCells();
-                    setTimeout(() => {
-                        alert('Joueur ' + playerTurn + ' a gagné !');
-                    }, "1");
-                    gameButtons.style.display = 'flex';
-                    return;
-                }
-                playerTurn = (playerTurn === 1) ? 2 : 1;
-                return;
-            }
-        }
-        else if (b === c && c === playerTwo[1]) {
-            console.log('playerTwo[1]');
-            const cell = document.getElementById(winCondition[0]);
-            if (cell.innerHTML === '') {
-                cell.innerHTML = playerSymbol;
-                if (checkWin()) {
-                    blockCells();
-                    setTimeout(() => {
-                        alert('Joueur ' + playerTurn + ' a gagné !');
-                    }, "1");
-                    gameButtons.style.display = 'flex';
-                    return;
-                }
-                playerTurn = (playerTurn === 1) ? 2 : 1;
-                return;
-            }
-        }
-        else if (a === b && b === playerOne[1]) {
-            console.log('playerOne[1]');
-            const cell = document.getElementById(winCondition[2]);
-            if (cell.innerHTML === '') {
-                cell.innerHTML = playerSymbol;
-                if (checkWin()) {
-                    blockCells();
-                    setTimeout(() => {
-                        alert('Joueur ' + playerTurn + ' a gagné !');
-                    }, "1");
-                    gameButtons.style.display = 'flex';
-                    return;
-                }
-                playerTurn = (playerTurn === 1) ? 2 : 1;
-                return;
-            }
-        }
-        else if (a === c && c === playerOne[1]) {
-            console.log('playerOne[1]');
-            const cell = document.getElementById(winCondition[1]);
-            if (cell.innerHTML === '') {
-                cell.innerHTML = playerSymbol;
-                if (checkWin()) {
-                    blockCells();
-                    setTimeout(() => {
-                        alert('Joueur ' + playerTurn + ' a gagné !');
-                    }, "1");
-                    gameButtons.style.display = 'flex';
-                    return;
-                }
-                playerTurn = (playerTurn === 1) ? 2 : 1;
-                return;
-            }
-        }
-        else if (b === c && c === playerOne[1]) {
-            console.log('playerOne[1]');
-            const cell = document.getElementById(winCondition[0]);
-            if (cell.innerHTML === '') {
-                cell.innerHTML = playerSymbol;
-                if (checkWin()) {
-                    blockCells();
-                    setTimeout(() => {
-                        alert('Joueur ' + playerTurn + ' a gagné !');
-                    }, "1");
-                    gameButtons.style.display = 'flex';
-                    return;
-                }
-                playerTurn = (playerTurn === 1) ? 2 : 1;
-                return;
-            }
+            return;
         }
     }
-    console.log('random');
+
+    for (let i = 0; i < winningConditions.length; i++) {
+        const winCondition = winningConditions[i];
+        const a = document.getElementById(winCondition[0]).innerHTML;
+        const b = document.getElementById(winCondition[1]).innerHTML;
+        const c = document.getElementById(winCondition[2]).innerHTML;
+        if ((a === b && b === playerOne[1] && c === '') ||
+            (a === c && c === playerOne[1] && b === '') ||
+            (b === c && c === playerOne[1] && a === '')) {
+            const cell = document.getElementById(winCondition.find(c => document.getElementById(c).innerHTML === ''));
+            cell.innerHTML = playerSymbol;
+            playerTurn = (playerTurn === 1) ? 2 : 1;
+            return;
+        }
+    }
+
     let randomCell = Math.floor(Math.random() * 9) + 1;
     let cell = document.getElementById(randomCell);
     while (cell.innerHTML !== '' && !checkDraw()) {
@@ -210,16 +139,16 @@ function computerPlay() {
     }
     cell.innerHTML = playerSymbol;
     if (checkWin()) {
-        blockCells();
         setTimeout(() => {
             alert('Joueur ' + playerTurn + ' a gagné !');
         }, "1");
+        blockCells();
         gameButtons.style.display = 'flex';
-        return;
+    } else {
+        playerTurn = (playerTurn === 1) ? 2 : 1;
     }
-    playerTurn = (playerTurn === 1) ? 2 : 1;
-    return;
 }
+
 
 function twoPlayers(cell) {
     if (checkDraw()) {
